@@ -1,0 +1,19 @@
+library(corrplot)
+M = cor(data_reduce[,8:11])
+corrplot(M, type="upper", order="hclust")
+
+corrplot(M,
+         method = 'number',
+         type = "lower")
+
+corr = round(cor(M), 1)
+ggcorrplot(corr, hc.order = TRUE,
+           type = "lower",
+           lab = TRUE,
+           lab_size = 3,
+           method="circle",
+           colors = c("tomato2", "white", "springgreen3"),
+           title="Correlogram of Data Nasabah",
+           ggtheme=theme_bw)
+cor(M, use="complete.obs", method="kendall")
+corrplot(M, method = "ellipse")
